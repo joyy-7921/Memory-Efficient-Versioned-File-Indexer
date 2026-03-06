@@ -57,7 +57,7 @@ The program requires a maximum of two text dataset files to run. Both are includ
 
 Simply clone the repository and both files will be available in the project directory automatically.
 
-> **Note:** The datasets can be modified in any way.
+> **Note:** The datasets must not be modified in any way.
 
 ### Installation Steps
 1. Clone the repository or download the source code
