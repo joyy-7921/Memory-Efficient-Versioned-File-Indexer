@@ -51,7 +51,7 @@ The Memory-Efficient Versioned File Indexer is a comprehensive C++ application d
 - Basic knowledge of command-line interface
 
 ### Dataset Setup
-The program requires two standard text dataset files to run. Both are included in this repository:
+The program requires a maximum of two text dataset files to run. Both are included in this repository:
 - **test_logs.txt** — Dataset 1
 - **verbose_logs.txt** — Dataset 2
 
@@ -74,19 +74,19 @@ g++ -std=c++14 -o analyzer yourfile.cpp
 ### Word Count Query
 Returns the frequency of a specific word in a given version:
 ```bash
-./analyzer --file dataset_v1.txt --version v1 --buffer 512 --query word --word error
+./analyzer --file test_logs.txt --version v1 --buffer 512 --query word --word error
 ```
 
 ### Top-K Query
 Returns the top K most frequent words in a given version:
 ```bash
-./analyzer --file dataset_v1.txt --version v1 --buffer 512 --query top --top 10
+./analyzer --file test_logs.txt --version v1 --buffer 512 --query top --top 10
 ```
 
 ### Difference Query
 Returns the difference in word frequency between two versions:
 ```bash
-./analyzer --file1 dataset_v1.txt --version1 v1 --file2 dataset_v2.txt --version2 v2 --buffer 512 --query diff --word error
+./analyzer --file1 test_logs.txt --version1 v1 --file2 verbose_logs.txt --version2 v2 --buffer 512 --query diff --word error
 ```
 
 ## Command-Line Arguments
