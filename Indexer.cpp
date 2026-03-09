@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <algorithm>
 #include <chrono>
 #include <cctype>
@@ -11,7 +11,7 @@
 using namespace std;
 
 template <typename T>
-T getValue(const map<string, T> &m, const string &key, T defaultVal)
+T getValue(const unordered_map<string, T> &m, const string &key, T defaultVal)
 {
     auto it = m.find(key);
     return (it != m.end()) ? it->second : defaultVal;
@@ -105,7 +105,7 @@ public:
 class VersionIndex
 {
 private:
-    map<string, map<string, int>> index; // version -> (word -> count)
+    unordered_map<string, unordered_map<string, int>> index; // version -> (word -> count)
 public:
     void addTokens(const string &version, const vector<string> &tokens)
     {
@@ -114,7 +114,7 @@ public:
             index[version][token]++;
         }
     }
-    const map<string, int> &getWordCounts(const string &version) const
+    const unordered_map<string, int> &getWordCounts(const string &version) const
     {
         if (index.find(version) == index.end())
         {
@@ -122,7 +122,7 @@ public:
         }
         return index.at(version);
     }
-    const map<string, map<string, int>> &getIndex() const
+    const unordered_map<string, unordered_map<string, int>> &getIndex() const
     {
         return index;
     }
@@ -204,7 +204,7 @@ public:
     {
         try
         {
-            const map<string, int> &wordCounts = versionIndex.getWordCounts(version);
+            const unordered_map<string, int> &wordCounts = versionIndex.getWordCounts(version);
             vector<pair<string, int>> wordList(wordCounts.begin(), wordCounts.end());
 
             // Sort by count in descending order
