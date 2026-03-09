@@ -30,7 +30,7 @@ The Memory-Efficient Versioned File Indexer is a comprehensive C++ application d
 ### Class Structure
 - **Buffer Class:** Manages fixed-size buffered reading of input files using RAII with `unique_ptr`
 - **Tokenizer Class:** Extracts alphanumeric words from buffer chunks and handles split tokens across boundaries
-- **VersionIndex Class:** Stores and manages word-frequency maps per version using a nested map structure
+- **VersionIndex Class:** Stores and manages word-frequency maps per version using a nested unordered map structure
 - **Query Class:** Abstract base class with pure virtual `compute()` function
 - **WordCountQuery Class:** Derived from Query, implements word frequency lookup
 - **TopKQuery Class:** Derived from Query, implements top-K frequent word retrieval
@@ -40,7 +40,7 @@ The Memory-Efficient Versioned File Indexer is a comprehensive C++ application d
 - **Inheritance:** Abstract base class `Query` with three derived classes
 - **Runtime Polymorphism:** `unique_ptr<Query>` with virtual dispatch via `compute()`
 - **Function Overloading:** `getWordCounts()` overloaded with different parameter lists
-- **Templates:** `getValue<T>()` generic map lookup function
+- **Templates:** `getValue<T>()` generic unordered map lookup function
 - **Exception Handling:** `try/catch/throw` used throughout for robust error management
 - **RAII:** `unique_ptr<char[]>` for automatic buffer memory management
 
